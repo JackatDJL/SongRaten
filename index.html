@@ -264,10 +264,24 @@
   <h1>Willkommen auf Songraten.de</h1>
   <div class="button-container">
     <div class="btnmainframe">
-      <button class="custom-btn btn-6"><span>Create Game</span></button>
+      <button id="csgame" class="custom-btn btn-6"><span>Create Game</span></button>
+      <script>
+        var csgame = document.getElementById("csgame");
+      
+        csgame.addEventListener("click", function() {
+          window.location.href = "https://derjacklive.github.io/SongRaten/csgame";
+        });
+      </script>
     </div>
     <div class="or-separator"><span style="color: white;">-- oder --</span></div>
-    <button class="custom-btn btn-12"><span>Join!</span><span>Join with Code</span></button>
+    <button id="joinwcode"class="custom-btn btn-12"><span>Join!</span><span>Join with Code</span></button>
+    <script>
+      var joinwcode = document.getElementById("joinwcode");
+    
+      joinwcode.addEventListener("click", function() {
+        window.location.href = "https://derjacklive.github.io/SongRaten/joinwcode";
+      });
+    </script>
   </div>
 </body>
 </html>
