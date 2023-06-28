@@ -21,6 +21,13 @@
       background-position: 0% 50%;
     }
   }
+  h1 {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+  }
 
   .csbtnframecsgame {
     position: fixed;
@@ -116,19 +123,79 @@
   .btn-3 span:hover:after {
     width: 100%;
   }
+
+  #code {
+    width: 100px;
+    height: 40px;
+    font-size: 20px;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .btn-15 {
+  background: #b621fe;
+  border: none;
+  z-index: 1;
+  position: absolute;
+    top: calc(50% + 60px); /* 60px ist der Abstand zwischen dem Eingabefeld und dem Button */
+    left: calc(50% - 20px);
+    transform: translate(-50%, -50%);
+}
+.btn-15:after {
+  position: absolute;
+  content: "";
+  width: 0;
+  height: 100%;
+  top: 0;
+  right: 0;
+  z-index: -1;
+  background-color: #663dff;
+  border-radius: 5px;
+   box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
+   7px 7px 20px 0px rgba(0,0,0,.1),
+   4px 4px 5px 0px rgba(0,0,0,.1);
+  transition: all 0.3s ease;
+}
+.btn-15:hover {
+  color: #fff;
+}
+.btn-15:hover:after {
+  left: 0;
+  width: 100%;
+}
+.btn-15:active {
+}
   </style>
 </head>
 <body>
-    <div class="csbtnframecsgame">
-        <button id="backButton" class="custom-btn btn-3"><span>Zurück</span></button>
-        <script>
-            function redirectToHomepage() {
-              window.location.href = "https://derjacklive.github.io/SongRaten/";
-            }
-          
-            var backButton = document.getElementById("backButton");
-            backButton.addEventListener("click", redirectToHomepage);
-        </script>
-    </div>
+  <h1>Beitreten mit Code</h1>
+  <div class="csbtnframecsgame">
+    <button id="backButton" class="custom-btn btn-3"><span>Zurück</span></button>
+    <script>
+      function redirectToHomepage() {
+        window.location.href = "https://derjacklive.github.io/SongRaten/";
+      }
+    
+      var backButton = document.getElementById("backButton");
+      backButton.addEventListener("click", redirectToHomepage);
+    </script>
+  </div>
+  <input type="text" id="code" placeholder="Code" maxlength="6">
+  <button id="weiter" class="custom-btn btn-15">Weiter</button>
+  <script>
+    function redirectToGame() {
+      var codeInput = document.getElementById("code").value;
+      var gameURL = "https://derjacklive.github.io/SongRaten/game?code=" + codeInput;
+      window.location.href = gameURL;
+    }
+
+    var weiterButton = document.getElementById("weiter");
+    weiterButton.addEventListener("click", redirectToGame);
+  </script>
 </body>
 </html>
