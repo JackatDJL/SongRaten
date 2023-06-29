@@ -18,7 +18,7 @@ localStorage.setItem("gameid", code);
 localStorage.setItem("isPresenter", t);
 
 // Id Test
-if (localStorage.getItem("gameid") === null) {
+if (code == "") {
     window.location.href = "https://derjacklive.github.io/SongRaten/error.html";
 }
 
