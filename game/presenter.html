@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Presenter -- SongRaten.de</title>
+    <style>
+        body {
+            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+            height: 100vh;
+        }
+
+        @keyframes gradient {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .csbtnframecsgame {
+            position: fixed;
+            top: 10px;
+            left: 10px;
+        }
+
+        .btn-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            width: 200px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .custom-btn {
+            width: 130px;
+            height: 40px;
+            color: #fff;
+            border-radius: 5px;
+            padding: 10px 25px;
+            font-family: 'Lato', sans-serif;
+            font-weight: 500;
+            background: transparent;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            display: inline-block;
+            box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, .5),
+                        7px 7px 20px 0px rgba(0, 0, 0, .1),
+                        4px 4px 5px 0px rgba(0, 0, 0, .1);
+            outline: none;
+        }
+
+        .custom-btn.btn-3 {
+            background: rgb(0, 172, 238);
+            background: linear-gradient(0deg, rgba(0, 172, 238, 1) 0%, rgba(2, 126, 251, 1) 100%);
+            width: 130px;
+            height: 40px;
+            line-height: 42px;
+            padding: 0;
+            border: none;
+        }
+
+        .custom-btn.btn-3 span {
+            position: relative;
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+
+        .custom-btn.btn-3:before,
+        .custom-btn.btn-3:after {
+            position: absolute;
+            content: "";
+            right: 0;
+            top: 0;
+            background: rgba(2, 126, 251, 1);
+            transition: all 0.3s ease;
+        }
+
+        .custom-btn.btn-3:before {
+            height: 0%;
+            width: 2px;
+        }
+
+        .custom-btn.btn-3:after {
+            width: 0%;
+            height: 2px;
+        }
+
+        .custom-btn.btn-3:hover {
+            background: transparent;
+            box-shadow: none;
+        }
+
+        .custom-btn.btn-3:hover:before {
+            height: 100%;
+        }
+
+        .custom-btn.btn-3:hover:after {
+            width: 100%;
+        }
+
+        .custom-btn.btn-3 span:hover {
+            color: rgba(2, 126, 251, 1);
+        }
+
+        .custom-btn.btn-3 span:before,
+        .custom-btn.btn-3 span:after {
+            position: absolute;
+            content: "";
+            left: 0;
+            bottom: 0;
+            background: rgba(2, 126, 251, 1);
+            transition: all 0.3s ease;
+        }
+
+        .custom-btn.btn-3 span:before {
+            width: 2px;
+            height: 0%;
+        }
+
+        .custom-btn.btn-3 span:after {
+            width: 0%;
+            height: 2px;
+        }
+
+        .custom-btn.btn-3 span:hover:before {
+            height: 100%;
+        }
+
+        .custom-btn.btn-3 span:hover:after {
+            width: 100%;
+        }
+
+        .img-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            justify-items: center;
+            margin-top: 60px;
+        }
+
+        .buzzer-container {
+            position: relative;
+            width: 100%;
+            height: 0;
+            padding-bottom: 100%;
+        }
+
+        .buzzer-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .border {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 90%;
+            height: 90%;
+            border: 3px solid #fff;
+            border-radius: 10px;
+        }
+
+        .team-name {
+            text-align: center;
+            color: #fff;
+            font-family: 'Lato', sans-serif;
+            font-weight: 500;
+            margin-top: 10px;
+        }
+        .consolebuttonframe {
+        width: 90%;
+        margin: 40px auto;
+        text-align: center;
+        }
+        .btn-9 {
+        border: none;
+        transition: all 0.3s ease;
+        overflow: hidden;
+        }
+        .btn-9:after {
+        position: absolute;
+        content: " ";
+        z-index: -1;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #1fd1f9;
+        background-image: linear-gradient(315deg, #1fd1f9 0%, #b621fe 74%);
+        transition: all 0.3s ease;
+        }
+        .btn-9:hover {
+        background: transparent;
+        box-shadow:  4px 4px 6px 0 rgba(255,255,255,.5),
+              -4px -4px 6px 0 rgba(116, 125, 136, .2), 
+        inset -4px -4px 6px 0 rgba(255,255,255,.5),
+        inset 4px 4px 6px 0 rgba(116, 125, 136, .3);
+         color: #fff;
+        }
+        .btn-9:hover:after {
+        -webkit-transform: scale(2) rotate(180deg);
+        transform: scale(2) rotate(180deg);
+        box-shadow:  4px 4px 6px 0 rgba(255,255,255,.5),
+              -4px -4px 6px 0 rgba(116, 125, 136, .2), 
+        inset -4px -4px 6px 0 rgba(255,255,255,.5),
+        inset 4px 4px 6px 0 rgba(116, 125, 136, .3);
+        }
+        #consolebuttonframe {
+        width: fit-content;
+        margin: 40px auto;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        }
+
+        .btn-9 {
+        margin: 0 10px;
+        }
+        .room-id {
+        position: absolute;
+        top: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        color: #fff;
+        font-family: 'Lato', sans-serif;
+        font-weight: 500;
+        font-size: 24px;
+        text-align: center;
+        z-index: 1;
+        }
+
+    </style>
+</head>
+<body>
+<div class="csbtnframecsgame">
+    <button id="backButton" class="custom-btn btn-3"><span>Leave</span></button>
+    <script>
+        function redirectToHomepage() {
+            window.location.href = "https://derjacklive.github.io/SongRaten/";
+        }
+
+        var backButton = document.getElementById("backButton");
+        backButton.addEventListener("click", redirectToHomepage);
+    </script>
+    <script>
+        backButton.style.display = "none";
+    </script>
+</div>
+<div id="RoomNBRTXT">
+    <h1 id="rid" class="room-id"></h1>
+    <script>
+        var roomID = localStorage.getItem("roomID");
+        var roId = document.getElementById("rid");
+        roId.textContent = "Room ID: " + roomID;
+    </script>
+</div>
+<div class="img-container">
+    <div class="btn-container">
+        <div class="buzzer-container">
+            <img src="https://derjacklive.github.io/SongRaten/img/buzzer_off.png" class="buzzer-image" id="buzzer1">
+            <div class="border"></div>
+        </div>
+        <div class="team-name" id="teamName1"></div>
+    </div>
+    <div class="btn-container">
+        <div class="buzzer-container">
+            <img src="https://derjacklive.github.io/SongRaten/img/buzzer_off.png" class="buzzer-image" id="buzzer2">
+            <div class="border"></div>
+        </div>
+        <div class="team-name" id="teamName2"></div>
+    </div>
+    <div class="btn-container">
+        <div class="buzzer-container">
+            <img src="https://derjacklive.github.io/SongRaten/img/buzzer_off.png" class="buzzer-image" id="buzzer3">
+            <div class="border"></div>
+        </div>
+        <div class="team-name" id="teamName3"></div>
+    </div>
+    <div class="btn-container">
+        <div class="buzzer-container">
+            <img src="https://derjacklive.github.io/SongRaten/img/buzzer_off.png" class="buzzer-image" id="buzzer4">
+            <div class="border"></div>
+        </div>
+        <div class="team-name" id="teamName4"></div>
+    </div>
+</div>
+
+<script>
+    function getTeamName(userID) {
+        var teamName = localStorage.getItem(userID + "username");
+        return teamName ? teamName : "Team " + userID;
+    }
+
+    function setTeamName(elementID, teamName) {
+        var element = document.getElementById(elementID);
+        if (element) {
+            element.textContent = teamName;
+        }
+    }
+
+    for (var i = 1; i <= 4; i++) {
+        var teamName = getTeamName(i);
+        setTeamName("teamName" + i, teamName);
+    }
+</script>
+<div id="console">
+    <div id="consolebuttonframe">
+        <button class="custom-btn btn-9">Beenden</button>
+        <button class="custom-btn btn-9">Richtig</button>
+        <button class="custom-btn btn-9">Falsch</button>
+    </div>
+</div>
+</body>
+</html>

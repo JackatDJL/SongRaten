@@ -2,9 +2,7 @@
 <html>
 <head>
   <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
-  <title>Create Custom Game -- SongRaten.de</title>
-  <script src="gamestartup.js"></script>
-  <script src=" "></script>
+  <title>Sorry Game Is Full -- SongRaten.de</title>
   <style>
   body {
     background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
@@ -125,9 +123,58 @@
   .btn-3 span:hover:after {
     width: 100%;
   }
-  </style>
+  .btn-5 {
+  width: 130px;
+  height: 40px;
+  line-height: 42px;
+  padding: 0;
+  border: none;
+  background: rgb(255,27,0);
+background: linear-gradient(0deg, rgba(255,27,0,1) 0%, rgba(251,75,2,1) 100%);
+}
+.btn-5:hover {
+  color: #f0094a;
+  background: transparent;
+   box-shadow:none;
+}
+.btn-5:before,
+.btn-5:after{
+  content:'';
+  position:absolute;
+  top:0;
+  right:0;
+  height:2px;
+  width:0;
+  background: #f0094a;
+  box-shadow:
+   -1px -1px 5px 0px #fff,
+   7px 7px 20px 0px #0003,
+   4px 4px 5px 0px #0002;
+  transition:400ms ease all;
+}
+.btn-5:after{
+  right:inherit;
+  top:inherit;
+  left:0;
+  bottom:0;
+}
+.btn-5:hover:before,
+.btn-5:hover:after{
+  width:100%;
+  transition:800ms ease all;
+}
+.retry-button-container {
+      text-align: center;
+      margin-top: 20px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+}
+</style>
 </head>
 <body>
+    <h1>Sorry, the game is full!</h1>
     <div class="csbtnframecsgame">
         <button id="backButton" class="custom-btn btn-3"><span>Leave</span></button>
         <script>
@@ -138,6 +185,17 @@
             var backButton = document.getElementById("backButton");
             backButton.addEventListener("click", redirectToHomepage);
         </script>
+    </div>
+    <div class="retry-button-container">
+        <button id="retryButton" class="custom-btn btn-5"><span>Retry</span></button>
+    <script>
+        function redirectTojoinwcode() {
+            window.location.href = "https://derjacklive.github.io/SongRaten/joinwcode/";
+        }
+
+        var retryButton = document.getElementsByID("retryButton");
+        retryButton.addEventListener("click", redirectTojoinwcode);
+    </script>
     </div>
 </body>
 </html>

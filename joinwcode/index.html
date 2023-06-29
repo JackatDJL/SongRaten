@@ -168,8 +168,7 @@
   left: 0;
   width: 100%;
 }
-.btn-15:active {
-}
+
   </style>
 </head>
 <body>
@@ -190,7 +189,7 @@
   <script>
     function redirectToGame() {
       var codeInput = document.getElementById("code").value;
-      var gameURL = "https://derjacklive.github.io/SongRaten/game?code=" + codeInput;
+      var gameURL = "https://derjacklive.github.io/SongRaten/game?code=" + codeInput + "&t=0";
       window.location.href = gameURL;
     }
 
