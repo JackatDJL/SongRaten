@@ -17,6 +17,11 @@ console.log(t); // Ausgabe: 0 (oder den entsprechenden Wert aus der URL)
 localStorage.setItem("gameid", code);
 localStorage.setItem("isPresenter", t);
 
+// Id Test
+if (localStorage.getItem("gameid") === null) {
+    window.location.href = "https://derjacklive.github.io/SongRaten/error.html";
+}
+
 // Join-Scipt
 const message = "join";
 sendWebhookMessage(message);
