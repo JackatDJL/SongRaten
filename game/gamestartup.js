@@ -30,6 +30,7 @@ if (newestmessage != "1","2","3","4"){
     if (t == "1"){
         console.log("Join As Presenter")
         localStorage.setItem("playerid", "0");
+        window.location.href = "https://derjacklive.github.io/SongRaten/game/presenter";
     }
 }
 else if (newestmessage == "1","2","3","4"){
