@@ -24,8 +24,9 @@ if (code == "") {
 
 // Join-Scipt
 const message = "join";
-sendWebhookMessage(message);
-getwebhookmesage(callback);
+sendtoapi(message);
+getfromapi();
+var newestmessage = localStorage.getItem("ltsmessage");
 if (newestmessage != "1","2","3","4"){
     if (t == "1"){
         console.log("Join As Presenter")
@@ -39,6 +40,8 @@ else if (newestmessage == "1","2","3","4"){
 }
 else if (newestmessage == "full"){
     console.log("Game is full")
+    const message = "full";
+    sendtoapi(message);
     window.location.href = "https://derjacklive.github.io/SongRaten/game/gamefull.html";
 }
 else {

@@ -1,36 +1,41 @@
-function getwebhookmesage(callback) {
-  const express = require('express');
-  const bodyParser = require('body-parser');
+function getfromapi() {
+  const channelId = "1124778142272331897"; // Channel-ID
+  const botToken = "MTEyNDc3ODYwNjI1ODgzMTQxMA.GSrpc3.lDF3fWJW4FBxuuYd-4Pu6qQcEfjbz0IDLVPKfM"; // Bot-Token
 
-  const app = express();
-  app.use(bodyParser.json());
-
-  // Webhook-Endpunkt zum Empfangen der Nachrichten
-  app.post('/webhook', (req, res) => {
-    // Verarbeite die eingehende Webhook-Nachricht
-    const payload = req.body; // Zugriff auf die Daten des Webhooks
-
-    // Abrufen der Spiel-ID aus dem Local Storage
-    const gameid = localStorage.getItem("gameid");
-
-    // Überprüfe, ob die empfangene Nummer mit der Spiel-ID übereinstimmt
-    if (payload.number === gameid) {
-      // Die empfangene Nummer entspricht der Spiel-ID
-
-      // Speichere die Nachricht in einer Variable (z.B. newestmessage)
-      const newestmessage = payload.message;
-
-      // Rufe die Callback-Funktion mit der empfangenen Nachricht auf
-      if (callback && typeof callback === 'function') {
-        callback(newestmessage);
-      }
+  // Konfiguration für den GET-Request
+  const requestOptions = {
+    method: 'GET',
+    headers: {
+      'Authorization': `Bot ${botToken}`,
+      'Content-Type': 'application/json'
     }
+  };
 
-    // Sende eine Antwort an den Absender des Webhooks
-    res.sendStatus(200);
-  });
+  // GET-Request senden, um die neueste Nachricht abzurufen
+  fetch(`https://discord.com/api/v10/channels/${channelId}/messages?limit=1`, requestOptions)
+    .then(response => {
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+      return response.json();
+    })
+    .then(data => {
+      const latestMessage = data[0];
+      const gameid = localStorage.getItem("gameid");
 
-  app.listen(3000, () => {
-    console.log('Webhook-Server läuft auf Port 3000');
-  });
+      // Überprüfen, ob die empfangene Nachricht mit der Spiel-ID übereinstimmt
+      if (latestMessage.content.startsWith(gameid)) {
+        const messageContent = latestMessage.content.substring(gameid.length);
+        console.log("Neueste Nachricht im Kanal:", messageContent);
+
+        // Weitere Verarbeitung der Nachricht
+        localStorage.setItem("ltsmessage", messageContent);
+
+      } else {
+        console.log("Die empfangene Nachricht stimmt nicht mit der Spiel-ID überein.");
+      }
+    })
+    .catch(error => {
+      console.error('Fehler beim Abrufen der neuesten Nachricht:', error);
+    });
 }

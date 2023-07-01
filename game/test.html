@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Meine HTML-Seite</title>
+  <script src="https://derjacklive.github.io/SongRaten/game/userwebhookget.js"></script>
+    <script src="https://derjacklive.github.io/SongRaten/game/userwebhooksend.js"></script>
+  <script>
+    function handleLatestMessage() {
+      getfromapi(); // Aufruf der Funktion zum Abrufen der neuesten Nachricht
+      const messageContent = localStorage.getItem('ltsmessage'); // Annahme: messageContent wird in localStorage gespeichert
+      // Verwende die messageContent-Variable in deinem HTML-Code
+      document.getElementById("output").textContent = messageContent;
+    }
+    function handleinput() {
+      var message = document.getElementById("input").value;
+      sendtoapi(message);
+    }
+  </script>
+</head>
+<body>
+  <button onclick="handleLatestMessage()">Neueste Nachricht abrufen</button>
+  <div id="output"></div>
+  <input type="text" id="input" placeholder="Nachricht eingeben"></input>
+    <button onclick="handleinput()">Nachricht senden</button>
+</body>
+</html>

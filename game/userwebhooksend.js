@@ -1,31 +1,33 @@
-function sendWebhookMessage(message) {
-    const webhookUrl = 'https://derjacklive.github.io/SongRaten/game/webhook';
-  
-    // Daten für den POST-Request
+function sendtoapi(message) {
+
+  const channelId = "1124778142272331897"; // Channel-ID
+  const botToken = "MTEyNDc3ODYwNjI1ODgzMTQxMA.GSrpc3.lDF3fWJW4FBxuuYd-4Pu6qQcEfjbz0IDLVPKfM"; // Bot-Token
+
+  // Daten für den POST-Request
     const payload = {
-      number: localStorage.getItem('gameid'), // Spiel-ID aus dem Local Storage
-      message: localStorage.getItem('gameid') + ': ' + message // Spiel-ID + Nachricht
+      message: localStorage.getItem('gameid') + message // Spiel-ID + Nachricht
     };
   
     // Konfiguration für den POST-Request
-    const requestOptions = {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(payload)
-    };
+  const requestOptions = {
+    method: 'POST',
+    headers: {
+      'Authorization': `Bot ${botToken}`,
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(payload)
+  };
   
-    // POST-Request senden
-    fetch(webhookUrl, requestOptions)
-      .then(response => {
-        if (response.ok) {
-          console.log('Webhook-Nachricht erfolgreich gesendet');
-        } else {
-          console.error('Fehler beim Senden der Webhook-Nachricht');
-        }
-      })
-      .catch(error => {
-        console.error('Fehler beim Senden der Webhook-Nachricht:', error);
-      });
-  }  
+  // POST-Request senden
+  fetch(`https://discord.com/api/v10/channels/${channelId}/messages`, requestOptions)
+    .then(response => {
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+      console.log('Nachricht gesendet!');
+    })
+    .catch(error => {
+      console.error('Fehler beim Senden der Nachricht:', error);
+    });
+
+}  
