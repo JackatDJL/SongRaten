@@ -1,7 +1,7 @@
 function sendtoapi(message) {
 
   const channelId = "1124778142272331897"; // Channel-ID
-  const botToken = "MTEyNDc3ODYwNjI1ODgzMTQxMA.GSrpc3.lDF3fWJW4FBxuuYd-4Pu6qQcEfjbz0IDLVPKfM"; // Bot-Token
+  const botToken = "MTEyNDc3ODYwNjI1ODgzMTQxMA.GnKpXA.TAqPes4SFh3b3gX12V5HqdFHX186Mj-803JwT0"; // Bot-Token
 
   // Daten für den POST-Request
     const payload = {
