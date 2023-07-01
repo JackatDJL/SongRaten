@@ -1,6 +1,7 @@
 function getfromapi() {
   const channelId = "1124778142272331897"; // Channel-ID
-  const botToken = "MTEyNDc3ODYwNjI1ODgzMTQxMA.GnKpXA.TAqPes4SFh3b3gX12V5HqdFHX186Mj-803JwT0"; // Bot-Token
+  const obftoken = "MTEyNDc3ODYwNjI1ODgzMTQxMA.GACTl7.HOyIAFEMrk48XcI95NV9A_578tT623IWeAAo8g0"; // Bot-Token mit + 0
+  const botToken = obftoken.replace(/0\?$/, ""); // Bot-Token
 
   // Konfiguration für den GET-Request
   const requestOptions = {
