@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Send Test</title>
+    <script src="derjacklive.github.io/SongRaten/test.js"></script>
+</head>
+<body>
+    <h1>Send Test</h1>
+    <div>
+        <button id="testbutton">Test</button>
+        <script>
+            var testbutton = document.getElementById("testbutton");
+            testbutton.addEventListener("click", sendToDiscord("Hallo Discord!"));
+        </script>
+    </div>
+</html>
