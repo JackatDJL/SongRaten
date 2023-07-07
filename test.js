@@ -29,5 +29,5 @@ function sendToDiscord(messageContent) {
   }
   
   // Beispielaufruf der Funktion zum Senden einer Nachricht
-  // sendToDiscord("Hallo Discord!"); // Hier kannst du den gewünschten Inhalt der Nachricht angeben
+  sendToDiscord("Hallo Discord!"); // Hier kannst du den gewünschten Inhalt der Nachricht angeben
   
