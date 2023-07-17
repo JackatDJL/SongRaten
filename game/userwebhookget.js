@@ -13,7 +13,7 @@ function getfromapi() {
   };
 
   // GET-Request senden, um die neueste Nachricht abzurufen
-  fetch(`https://discord.com/api/v10/channels/${channelId}/messages?limit=1`, requestOptions)
+  fetch(`https://discord.com/api/v10/channels/${channelId}/messages`, requestOptions)
     .then(response => {
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);
@@ -21,19 +21,20 @@ function getfromapi() {
       return response.json();
     })
     .then(data => {
-      const latestMessage = data[0];
+      // Zugriff auf den Inhalt der neuesten Nachricht
+      const latestMessage = data[0].content;
       const gameid = localStorage.getItem("gameid");
 
       // Überprüfen, ob die empfangene Nachricht mit der Spiel-ID übereinstimmt
-      if (latestMessage.content.startsWith(gameid)) {
-        const messageContent = latestMessage.content.substring(gameid.length);
+      if (gameid && latestMessage.startsWith(gameid)) {
+        const messageContent = latestMessage.substring(gameid.length);
         console.log("Neueste Nachricht im Kanal:", messageContent);
 
         // Weitere Verarbeitung der Nachricht
         localStorage.setItem("ltsmessage", messageContent);
 
       } else {
-        console.log("Die empfangene Nachricht stimmt nicht mit der Spiel-ID überein.");
+        console.log("Die empfangene Nachricht stimmt nicht mit der Spiel-ID überein oder die Spiel-ID ist nicht definiert.");
       }
     })
     .catch(error => {

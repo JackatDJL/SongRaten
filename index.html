@@ -2,31 +2,46 @@
 <html>
 <head>
   <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
-  <title>Songraten.de</title>
+  <link rel="icon" href="https://derjacklive.github.io/SongRaten/img/favicon_icon.ico">
+  <link rel="shortcut icon" href="https://derjacklive.github.io/SongRaten/img/favicon_icon.ico">
+  <script>
+    var from = index
+    localStorage.setItem("from", from);
+  </script>
+  <script src="https://derjacklive.github.io/SongRaten/lang/langselector.js"></script>
+  <script src="https://derjacklive.github.io/SongRaten/lang/ask.js"></script>
+  <script src=langsrc></script>
+  <title id="ptitle"></title>
   <link rel="stylesheet" href="https://derjacklive.github.io/SongRaten/indexstyle.css">
 </head>
 <body>
-  <h1>Willkommen auf Songraten.de</h1>
+  <h1 id="title"></h1>
+  <script>
+  </script>
   <div class="button-container">
     <div class="btnmainframe">
-      <button id="csgame" class="custom-btn btn-6"><span>Create Game</span></button>
+      <button id="csgame" class="custom-btn btn-6"><span id="csgamebtntxt"></span></button>
       <script>
         var csgame = document.getElementById("csgame");
-      
         csgame.addEventListener("click", function() {
           window.location.href = "https://derjacklive.github.io/SongRaten/csgame";
         });
       </script>
     </div>
-    <div class="or-separator"><span style="color: white;">-- oder --</span></div>
-    <button id="joinwcode"class="custom-btn btn-12"><span>Join!</span><span>Join with Code</span></button>
+    <div class="or-separator"><span style="color: white;" id="septext"></span>
+    </div>
+    <button id="joinwcode"class="custom-btn btn-12"><span id="joinwcodetxt1"></span><span id="joinwcodetxt2"></span></button>
     <script>
-      var joinwcode = document.getElementById("joinwcode");
-    
+      var joinwcode = document.getElementById("joinwcode");    
       joinwcode.addEventListener("click", function() {
         window.location.href = "https://derjacklive.github.io/SongRaten/joinwcode";
       });
     </script>
+  </div>
+  <div class="langsel">
+    <button class="custom-btn btn-3" onclick="changeLanguage()" id="langselbtn">
+      <span class="flag-icon"></span> <!-- Flaggen-Emoji wird dynamisch aktualisiert -->
+    </button>
   </div>
 </body>
 </html>
