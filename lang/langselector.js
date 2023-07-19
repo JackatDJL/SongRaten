@@ -2,20 +2,6 @@ var currentLanguageIndex = 1; // Index der aktuellen Sprache
 var languages = ["de-DE", "en-US", "lat-UNI"]; // Liste der Sprachen
 var flagElements = document.getElementsByClassName("flag-icon"); // Alle Flaggen-Elemente
 
-function changeLanguage() {
-    currentLanguageIndex = (currentLanguageIndex + 1) % languages.length; // Nächsten Sprachindex ermitteln
-    var currentLanguage = languages[currentLanguageIndex]; // Aktuelle Sprache abrufen
-    setLanguageCookie(currentLanguage); // Sprach-Cookie setzen
-    updateLanguage(currentLanguage); // Sprache aktualisieren
-    updateFlagEmoji(currentLanguage); // Flaggen-Emoji aktualisieren
-
-    // Flaggen-Emoji für alle Flaggen-Elemente aktualisieren
-    for (var i = 0; i < flagElements.length; i++) {
-        var flagElement = flagElements[i];
-        flagElement.innerText = getFlagEmoji(currentLanguage);
-    }
-}
-
 function updateLanguage(language) {
     var lang = language;
     localStorage.setItem("lang", lang);
@@ -30,6 +16,18 @@ function getFlagEmoji(language) {
         return "🇺🇸";
     } else if (language === "lat-UNI") {
         return "🇱🇮🇳🇬🇺🇦"; // 🇱🇮🇳🇬🇺🇦 oder 🇱🇦🇹
+    }
+}
+
+function changeLanguage() {
+    currentLanguageIndex = (currentLanguageIndex + 1) % languages.length; // Nächsten Sprachindex ermitteln
+    var currentLanguage = languages[currentLanguageIndex]; // Aktuelle Sprache abrufen
+    setLanguageCookie(currentLanguage); // Sprach-Cookie setzen
+    updateLanguage(currentLanguage); // Sprache aktualisieren
+    // Flaggen-Emoji für alle Flaggen-Elemente aktualisieren
+    for (var i = 0; i < flagElements.length; i++) {
+        var flagElement = flagElements[i];
+        flagElement.innerText = getFlagEmoji(currentLanguage);
     }
 }
 
