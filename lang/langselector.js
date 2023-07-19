@@ -7,6 +7,7 @@ function changeLanguage() {
     var currentLanguage = languages[currentLanguageIndex]; // Aktuelle Sprache abrufen
     setLanguageCookie(currentLanguage); // Sprach-Cookie setzen
     updateLanguage(currentLanguage); // Sprache aktualisieren
+    updateFlagEmoji(currentLanguage); // Flaggen-Emoji aktualisieren
 
     // Flaggen-Emoji für alle Flaggen-Elemente aktualisieren
     for (var i = 0; i < flagElements.length; i++) {
@@ -16,7 +17,8 @@ function changeLanguage() {
 }
 
 function updateLanguage(language) {
-    localStorage.setItem("lang", language);
+    var lang = language;
+    localStorage.setItem("lang", lang);
 
 }
 

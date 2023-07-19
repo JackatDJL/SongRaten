@@ -1,19 +1,32 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
-  <link rel="icon" href="https://derjacklive.github.io/SongRaten/img/favicon_icon.ico">
-  <link rel="shortcut icon" href="https://derjacklive.github.io/SongRaten/img/favicon_icon.ico">
-  <script>
-    var from = index
-    localStorage.setItem("from", from);
-  </script>
-  <script src="https://derjacklive.github.io/SongRaten/lang/langselector.js"></script>
-  <script src="https://derjacklive.github.io/SongRaten/lang/ask.js"></script>
-  <script src=langsrc></script>
-  <title id="ptitle"></title>
-  <link rel="stylesheet" href="https://derjacklive.github.io/SongRaten/indexstyle.css">
-</head>
+  <head>
+    <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+    <link rel="icon" href="https://derjacklive.github.io/SongRaten/img/favicon_icon.ico">
+    <link rel="shortcut icon" href="https://derjacklive.github.io/SongRaten/img/favicon_icon.ico">
+    <script>
+      var from = "index";
+      localStorage.setItem("from", from);
+    </script>
+    <script src="https://derjacklive.github.io/SongRaten/lang/langselector.js"></script>
+    <script src="https://derjacklive.github.io/SongRaten/lang/ask.js"></script>
+    <script>
+      var langsrc = localStorage.getItem("langsrc"); // 'langsrc' aus dem localStorage holen
+  
+      var askjslang = document.createElement("script");
+      askjslang.src = langsrc;
+  
+      // Das neue <script>-Tag VOR dem <title> und <link> einbinden
+      var titleTag = document.getElementById("ptitle"); // Das <title>-Element holen
+      var headTag = document.head; // Das <head>-Element holen
+  
+      // Das neue <script>-Tag vor dem <title>-Element einfügen
+      headTag.insertBefore(askjslang, titleTag);
+    </script>
+    <title id="ptitle"></title>
+    <link rel="stylesheet" href="https://derjacklive.github.io/SongRaten/indexstyle.css">
+  </head>
+  
 <body>
   <h1 id="title"></h1>
   <script>

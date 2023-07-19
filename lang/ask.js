@@ -13,6 +13,7 @@ function asksrclang() {
     if (lang == 'lat-UNI') {
         var langsrc = `derjacklive.github.io/songraten/lang/lat-UNI/${from}lang.js`;
     }
+    localStorage.setItem('langsrc', langsrc);
 }
 
 asksrclang();
