@@ -1,39 +1,45 @@
-// Funktion zum Setzen des Sprach-Cookies, nur wenn cookiesAccepted=true
-function setLanguageCookie(language) {
-    if (cookiesAccepted) {
-      var expirationDate = new Date();
-      expirationDate.setFullYear(expirationDate.getFullYear() + 1);
+var language = "en-US";
+
+// Funktion zum Abrufen der Sprache und Zustimmung
+function getLanguageAndConsentintern() {
+  var name = "language=";
+  var cookies = document.cookie.split(';');
+  
+  for(var i = 0; i < cookies.length; i++) {
+    var cookie = cookies[i].trim();
+    
+    if (cookie.indexOf(name) === 0) {
+      var cookieValue = cookie.substring(name.length, cookie.length);
+      var cookieData = cookieValue.split('&');
       
-      var cookieValue = "language=" + language + "&cookiesAccepted=true";
+      var language = cookieData[0];
+      var consen = cookieData[1].split('=')[1];
       
-      document.cookie = cookieValue + "; expires=" + expirationDate.toUTCString() + "; path=/";
+      return {
+        language: language,
+        consent: consen === "true"
+      };
     }
   }
   
-  // Funktion zum Abrufen der Sprache und Zustimmung
-  function getLanguageAndConsentintern() {
-    var name = "language=";
-    var cookies = document.cookie.split(';');
-    
-    for(var i = 0; i < cookies.length; i++) {
-      var cookie = cookies[i].trim();
+  return null;
+}
+
+
+
+// Funktion zum Setzen des Sprach-Cookies, nur wenn cookiesAccepted=true
+function setLanguageCookie(language) {
+  var cookiesAccepted = getLanguageAndConsentintern().consent;
+  if (cookiesAccepted) {
+  var expirationDate = new Date();
+  expirationDate.setFullYear(expirationDate.getFullYear() + 1);
       
-      if (cookie.indexOf(name) === 0) {
-        var cookieValue = cookie.substring(name.length, cookie.length);
-        var cookieData = cookieValue.split('&');
-        
-        var language = cookieData[0];
-        var consent = cookieData[1].split('=')[1];
-        
-        return {
-          language: language,
-          consent: consent === "true"
-        };
-      }
-    }
-    
-    return null;
+  var cookieValue = "language=" + language + "&cookiesAccepted=true";
+      
+  document.cookie = cookieValue + "; expires=" + expirationDate.toUTCString() + "; path=/";
   }
+}
+  
   
   // Beispiel für die Verwendung:
   function getlngandcons() {

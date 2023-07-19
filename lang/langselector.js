@@ -2,9 +2,21 @@ var currentLanguageIndex = 1; // Index der aktuellen Sprache
 var languages = ["de-DE", "en-US", "lat-UNI"]; // Liste der Sprachen
 var flagElements = document.getElementsByClassName("flag-icon"); // Alle Flaggen-Elemente
 
+function reloadtext() {
+    for (var key in data) {
+        if (data.hasOwnProperty(key)) {
+        var element = document.getElementById(key);
+        if (element) {
+            element.innerText = data[key];
+        }
+        }
+    }
+}
+
 function updateLanguage(language) {
     var lang = language;
     localStorage.setItem("lang", lang);
+    reloadtext();
 
 }
 
@@ -20,7 +32,9 @@ function getFlagEmoji(language) {
 }
 
 function changeLanguage() {
+    currentLanguageIndex = localStorage.getItem("langindex");
     currentLanguageIndex = (currentLanguageIndex + 1) % languages.length; // Nächsten Sprachindex ermitteln
+    localStorage.setItem("langindex", currentLanguageIndex);
     var currentLanguage = languages[currentLanguageIndex]; // Aktuelle Sprache abrufen
     setLanguageCookie(currentLanguage); // Sprach-Cookie setzen
     updateLanguage(currentLanguage); // Sprache aktualisieren
@@ -31,15 +45,5 @@ function changeLanguage() {
     }
 }
 
-function reloadtext() {
-    for (var key in data) {
-        if (data.hasOwnProperty(key)) {
-        var element = document.getElementById(key);
-        if (element) {
-            element.innerText = data[key];
-        }
-        }
-    }
-}
 
 changeLanguage(); // Direkt Auf Englisch setzen
