@@ -15,6 +15,3 @@ function asksrclang() {
     }
     localStorage.setItem('langsrc', langsrc);
 }
-
-asksrclang();
-reloadtext();

@@ -54,7 +54,3 @@ function setLanguageCookie(language) {
     console.log("Keine gespeicherten Daten gefunden");
   }
 }
-
-getlngandcons();
-localStorage.setItem("lang", language);
-localStorage.setItem("cconsent", consent);

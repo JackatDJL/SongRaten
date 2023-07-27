@@ -1,3 +1,4 @@
+var oldLanguageIndex = none; // Index der aktuellen Sprache
 var currentLanguageIndex = 1; // Index der aktuellen Sprache
 var languages = ["de-DE", "en-US", "lat-UNI"]; // Liste der Sprachen
 var flagElements = document.getElementsByClassName("flag-icon"); // Alle Flaggen-Elemente
@@ -27,13 +28,13 @@ function getFlagEmoji(language) {
     } else if (language === "en-US") {
         return "🇺🇸";
     } else if (language === "lat-UNI") {
-        return "🇱🇮🇳🇬🇺🇦"; // 🇱🇮🇳🇬🇺🇦 oder 🇱🇦🇹
+        return "🇱🇦🇹"; // 🇱🇮🇳🇬🇺🇦 oder 🇱🇦🇹
     }
 }
 
 function changeLanguage() {
-    currentLanguageIndex = localStorage.getItem("langindex");
-    currentLanguageIndex = (currentLanguageIndex + 1) % languages.length; // Nächsten Sprachindex ermitteln
+    oldLanguageIndex = localStorage.getItem("langindex");
+    currentLanguageIndex = (oldLanguageIndex + 1) % languages.length; // Nächsten Sprachindex ermitteln
     localStorage.setItem("langindex", currentLanguageIndex);
     var currentLanguage = languages[currentLanguageIndex]; // Aktuelle Sprache abrufen
     setLanguageCookie(currentLanguage); // Sprach-Cookie setzen
@@ -46,4 +47,4 @@ function changeLanguage() {
 }
 
 
-changeLanguage(); // Direkt Auf Englisch setzen
+ // Direkt Auf Englisch setzen

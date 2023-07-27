@@ -6,12 +6,20 @@
     <link rel="shortcut icon" href="https://derjacklive.github.io/SongRaten/img/favicon_icon.ico">
     <script src="https://derjacklive.github.io/SongRaten/cookies.js"></script>
     <script>
+      getlngandcons();
+      localStorage.setItem("lang", language);
+      localStorage.setItem("cconsent", consent);
       var from = "index";
       localStorage.setItem("from", from);
     </script>
     <script src="https://derjacklive.github.io/SongRaten/lang/langselector.js"></script>
+    <script>
+      changeLanguage();
+    </script>
     <script src="https://derjacklive.github.io/SongRaten/lang/ask.js"></script>
     <script>
+      asksrclang();
+      reloadtext();
       var langsrc = localStorage.getItem("langsrc"); // 'langsrc' aus dem localStorage holen
   
       var askjslang = document.createElement("script");
@@ -56,8 +64,11 @@
     </script>
   </div>
   <div class="langsel">
-    <button class="custom-btn btn-3" onclick="changeLanguage()" id="langselbtn">
+    <button class="custom-btn btn-3" id="langselbtn">
       <span class="flag-icon"></span> <!-- Flaggen-Emoji wird dynamisch aktualisiert -->
+      <script>
+        document.getElementById("langselbtn").addEventListener("click", changeLanguage())
+      </script>
     </button>
   </div>
 </body>
