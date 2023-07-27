@@ -8,7 +8,7 @@ function reloadtext() {
         if (data.hasOwnProperty(key)) {
         var element = document.getElementById(key);
         if (element) {
-            element.innerHTML = data[key];
+            element.innertext = data[key];
         }
         }
     }
