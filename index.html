@@ -24,6 +24,7 @@
   
       var askjslang = document.createElement("script");
       askjslang.src = langsrc;
+      askjslang.id = "askjslang";
   
       // Das neue <script>-Tag VOR dem <title> und <link> einbinden
       var titleTag = document.getElementById("ptitle"); // Das <title>-Element holen
@@ -71,8 +72,11 @@
       function fger() {
         langsrc = "https://derjacklive.github.io/SongRaten/lang/de-DE/indexlang.js";
         localStorage.setItem("langsrc", langsrc);
-        askjslang.src = langsrc;
+        var existingAskjslang = document.getElementById("askjslang"); // Das existierende Skript-Element abrufen
+        if (existingAskjslang) {
+        existingAskjslang.src = langsrc; // Die Skript-Quelle aktualisieren
         reloadtext();
+      }
       }
 
       forcer.addEventListener("click", fger);
