@@ -7,13 +7,13 @@
 </head>
 <body>
 <div class="csbtnframecsgame">
-    <button id="backButton" class="custom-btn btn-3"><span>Leave</span></button>
+    <button id="leaveButton" class="custom-btn btn-3"><span>Leave</span></button>
     <script>
         function redirectToHomepage() {
             window.location.href = "https://derjacklive.github.io/SongRaten/";
         }
 
-        var backButton = document.getElementById("backButton");
+        var backButton = document.getElementById("leaveButton");
         backButton.addEventListener("click", redirectToHomepage);
     </script>
     <script>
@@ -25,7 +25,7 @@
     <script>
         var roomID = localStorage.getItem("roomID");
         var roId = document.getElementById("rid");
-        roId.textContent = "Room ID: " + roomID;
+        roId.textContent = roIdtranslation + " " + roomID;
     </script>
 </div>
 <div class="img-container">

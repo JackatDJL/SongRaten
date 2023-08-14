@@ -63,6 +63,21 @@
       });
     </script>
   </div>
+  <div id="force"> 
+    <button id="forcegrm">Force</button>
+    <script>
+      var forcer = document.getElementById("forcegrm");
+
+      function fger() {
+        langsrc = "https://derjacklive.github.io/SongRaten/lang/de-DE/indexlang.js";
+        localStorage.setItem("langsrc", langsrc);
+        askjslang.src = langsrc;
+        reloadtext();
+      }
+
+      forcer.addEventListener("click", fger);
+    </script>
+  </div>
   <div class="langsel">
     <button class="custom-btn btn-3" id="langselbtn">
       <span class="flag-icon">none</span> <!-- Flaggen-Emoji wird dynamisch aktualisiert -->
