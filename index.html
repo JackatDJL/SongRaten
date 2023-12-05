@@ -68,7 +68,6 @@
     <button id="forcegrm">Force</button>
     <script>
       var forcer = document.getElementById("forcegrm");
-			forcer.addEventListener("click", fger());
       function fger() {
         langsrc = "https://derjacklive.github.io/SongRaten/lang/de-DE/indexlang.js";
         localStorage.setItem("langsrc", langsrc);
@@ -79,7 +78,7 @@
       }
       }
 
-      forcer.addEventListener("click", fger);
+      forcer.addEventListener("click", fger());
     </script>
   </div>
   <div class="langsel">
