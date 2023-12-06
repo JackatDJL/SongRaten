@@ -33,7 +33,7 @@
       // Das neue <script>-Tag vor dem <title>-Element einfügen
       headTag.insertBefore(askjslang, titleTag);
     </script>
-    <title id="ptitle">none</title>
+    <title id="ptitle"></title>
     <script>
       reloadtext();
     </script>
@@ -41,12 +41,12 @@
   </head>
   
 <body>
-  <h1 id="title">none</h1>
+  <h1 id="title"></h1>
   <script>
   </script>
   <div class="button-container">
     <div class="btnmainframe">
-      <button id="csgame" class="custom-btn btn-6"><span id="csgamebtntxt">none</span></button>
+      <button id="csgame" class="custom-btn btn-6"><span id="csgamebtntxt"></span></button>
       <script>
         var csgame = document.getElementById("csgame");
         csgame.addEventListener("click", function() {
@@ -83,7 +83,7 @@
   </div>
   <div class="langsel">
     <button class="custom-btn btn-3" id="langselbtn">
-      <span class="flag-icon">none</span> <!-- Flaggen-Emoji wird dynamisch aktualisiert -->
+      <span class="flag-icon"></span> <!-- Flaggen-Emoji wird dynamisch aktualisiert -->
       <script>
         document.getElementById("langselbtn").addEventListener("click", changeLanguage);
       </script>
